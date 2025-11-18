@@ -705,48 +705,20 @@ def logout():
 def test_route():
     return "Flask server is working! Timestamp: " + str(datetime.utcnow())
 
+# ===== PRODUCTION CONFIGURATION =====
+def create_app():
+    return app
+
 if __name__ == '__main__':
+    # Hanya buat folder uploads
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
-
-    with app.app_context():
-        try:
-            db.create_all()
-            
-            admin_username = 'ADMIN317'
-            admin_user = User.query.filter_by(username=admin_username, role='admin').first()
-            
-            if not admin_user:
-                print("Creating admin user...")
-                admin_user = User(
-                    username=admin_username,
-                    role='admin',
-                    status='aktif'
-                )
-                admin_user.set_password('bismillah317')
-                admin_user.set_encrypted_data(nama='Administrator Utama')
-                db.session.add(admin_user)
-                db.session.commit()
-                print("Admin user created successfully!")
-            else:
-                print("Admin user already exists")
-                
-                # Reset password untuk memastikan
-                admin_user.set_password('bismillah317')
-                db.session.commit()
-                print("Admin password reset")
-
-            db.session.commit()
-            print("Database initialized successfully!")
-
-        except Exception as e:
-            db.session.rollback()
-            print(f"Error initializing database: {e}")
-
+    
     print("Starting Flask server...")
     print("Access URLs:")
-    print("   http://localhost:5001")
-    print("   http://192.168.182.17:5001")
-    print("   http://0.0.0.0:5001")
-
-    app.run(debug=True, host='0.0.0.0', port=5001)
+    print("   http://localhost:5000")
+    print("   http://192.168.182.17:5000")
+    print("   http://0.0.0.0:5000")
+    
+    # Run dengan debug=False dan port=5000
+    app.run(debug=False, host='0.0.0.0', port=5000)
