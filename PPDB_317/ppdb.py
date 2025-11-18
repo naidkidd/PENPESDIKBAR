@@ -12,7 +12,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 # ===== KONFIGURASI =====
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key-ubah-ini-dengan-random-string'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ppdb_admin:password_anda@192.168.189.141:3306/ppdb_database'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ppdb_admin:PPdb317#@192.168.189.141:3306/ppdb_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB
