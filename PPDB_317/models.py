@@ -69,43 +69,43 @@ class User(db.Model):
     @property
     def nama_decrypted(self):
         return decrypt_data(self.nama)
-    
+
     @property
     def tempat_lahir_decrypted(self):
         return decrypt_data(self.tempat_lahir)
-    
+
     @property
     def jenis_kelamin_decrypted(self):
         return decrypt_data(self.jenis_kelamin)
-    
+
     @property
     def agama_decrypted(self):
         return decrypt_data(self.agama)
-    
+
     @property
     def alamat_decrypted(self):
         return decrypt_data(self.alamat)
-    
+
     @property
     def no_hp_decrypted(self):
         return decrypt_data(self.no_hp)
-    
+
     @property
     def asal_sekolah_decrypted(self):
         return decrypt_data(self.asal_sekolah)
-    
+
     @property
     def nama_ayah_decrypted(self):
         return decrypt_data(self.nama_ayah)
-    
+
     @property
     def pekerjaan_ayah_decrypted(self):
         return decrypt_data(self.pekerjaan_ayah)
-    
+
     @property
     def nama_ibu_decrypted(self):
         return decrypt_data(self.nama_ibu)
-    
+
     @property
     def pekerjaan_ibu_decrypted(self):
         return decrypt_data(self.pekerjaan_ibu)
@@ -145,5 +145,3 @@ class DaftarKelulusanSementara(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     tanggal_diluluskan = db.Column(db.DateTime, default=datetime.utcnow)
     status_pengumuman = db.Column(db.String(20), default='belum_diumumkan')
-    
-    user = db.relationship('User', backref=db.backref('daftar_kelulusan', lazy=True))
